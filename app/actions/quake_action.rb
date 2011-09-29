@@ -6,7 +6,7 @@ class QuakeAction < Cramp::Action
   
   def send_latest_quakes
     events = Quake::Event.last_hour
-    event = events.last
+    event = events.first
     attributes = {}
     event.instance_variables.each do |var|
       attributes[var.to_s.delete("@")] = event.instance_variable_get(var)
